@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: tg-checker
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 180 --workers 1 --threads 16
+    envVars:
+      - key: TG_API_ID
+        value: "29612794"
+      - key: TG_API_HASH
+        value: "6edc1a58a202c9f6e62dc98466932bad"
+      - key: BOT_USERNAME
+        value: "DazaiappBot"
+      - key: MSG_PREFIX
+        value: "/au"
+      - key: AUTHORIZED_KEY
+        value: "never"
+      - key: ADMIN_KEY
+        value: "NEVERTHELESS"
+      - key: FLASK_SECRET
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: "3.11.9"
